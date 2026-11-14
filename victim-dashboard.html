@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ASHA · Support Chat</title>
+<link rel="stylesheet" href="theme.css">
+<link rel="stylesheet" href="asha-brand.css">
+<style>
+  body{display:flex;flex-direction:column}
+  main{flex:1}
+  .brand .logo.asha-logo{width:58px;height:58px;border-radius:50%;background:radial-gradient(circle at 30% 25%,#1668c1,#0b3d7a 70%);box-shadow:0 6px 18px rgba(11,61,122,.35),inset 0 1px 0 rgba(255,255,255,.25)}
+  .brand .logo.asha-logo svg{width:82%;height:82%}
+  .asha-name{color:#0b3d7a}
+  .chat-card{margin-top:16px;overflow:hidden}
+  form{display:flex;gap:8px;padding:14px;border-top:1px solid var(--line);align-items:center}
+  input{flex:1;padding:12px 14px;border:1px solid #c9d6e4;border-radius:10px;outline:none;background:#fff}
+  input:focus{border-color:var(--blue);box-shadow:0 0 0 3px var(--ring)}
+  #mic,#mute{background:#eef3f9;color:#3c506b;border:1px solid var(--line);border-radius:10px;padding:11px 13px;cursor:pointer;font-size:16px;transition:.15s}
+  #mic:hover,#mute:hover{background:#e2ecf6}
+  #mic.listening{background:var(--red);color:#fff;border-color:var(--red);animation:pulse 1.2s infinite}
+  form button[type=submit],.send-btn{background:linear-gradient(135deg,var(--green),var(--green-d));color:#fff;border:none;border-radius:10px;padding:11px 20px;font-weight:700;cursor:pointer;box-shadow:0 5px 14px rgba(31,157,97,.25)}
+  @keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(192,57,43,.45)}50%{box-shadow:0 0 0 8px rgba(192,57,43,0)}}
+  #langbadge{font-size:12px;color:var(--muted);padding:0 16px 12px;min-height:18px}
+  .quick-links{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+  .quick-links a{font-size:11.5px;text-decoration:none;color:var(--blue);background:#fff;border:1px solid var(--line);border-radius:999px;padding:7px 13px;transition:.15s}
+  .quick-links a:hover{background:#f0f6fc}
+  p.small-note{margin-top:14px;font-size:11px;color:var(--muted);text-align:center}
+</style>
+</head>
+<body>
+
+<!-- ASHA heritage backdrop: Ashoka Chakra + temple skyline -->
+<div class="asha-bg" aria-hidden="true">
+  <svg class="bg-chakra" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <g fill="none" stroke="#0b3d7a" stroke-width="4"><circle cx="50" cy="50" r="44"/><circle cx="50" cy="50" r="36" stroke-width="1.6" opacity=".55"/><g stroke-width="2.6" stroke-linecap="round" opacity=".95"><line x1="50" y1="8" x2="50" y2="16"/><line x1="50" y1="84" x2="50" y2="92"/><line x1="8" y1="50" x2="16" y2="50"/><line x1="84" y1="50" x2="92" y2="50"/><line x1="18.9" y1="18.9" x2="24.4" y2="24.4"/><line x1="75.6" y1="75.6" x2="81.1" y2="81.1"/><line x1="81.1" y1="18.9" x2="75.6" y2="24.4"/><line x1="24.4" y1="75.6" x2="18.9" y2="81.1"/><line x1="29" y1="11.7" x2="31.1" y2="19.3"/><line x1="68.9" y1="80.7" x2="71" y2="88.3"/><line x1="71" y1="11.7" x2="68.9" y2="19.3"/><line x1="31.1" y1="80.7" x2="29" y2="88.3"/><line x1="11.7" y1="29" x2="19.3" y2="31.1"/><line x1="80.7" y1="68.9" x2="88.3" y2="71"/><line x1="88.3" y1="29" x2="80.7" y2="31.1"/><line x1="19.3" y1="68.9" x2="11.7" y2="71"/><line x1="8.9" y1="41" x2="16.6" y2="43.1"/><line x1="83.4" y1="56.9" x2="91.1" y2="59"/><line x1="91.1" y1="41" x2="83.4" y2="43.1"/><line x1="16.6" y1="56.9" x2="8.9" y2="59"/><line x1="41" y1="8.9" x2="43.1" y2="16.6"/><line x1="56.9" y1="83.4" x2="59" y2="91.1"/><line x1="59" y1="8.9" x2="56.9" y2="16.6"/><line x1="43.1" y1="83.4" x2="41" y2="91.1"/></g></g>
+    <circle cx="50" cy="50" r="5" fill="#0b3d7a"/>
+  </svg>
+  <svg class="bg-temples" viewBox="0 0 1200 240" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg">
+    <g fill="#0b3d7a" opacity="0.85">
+      <g transform="translate(60,0)"><rect x="20" y="170" width="120" height="70"/><rect x="34" y="130" width="92" height="44"/><rect x="46" y="96" width="68" height="38"/><path d="M50 96 L80 40 L110 96 Z"/><circle cx="80" cy="34" r="7"/></g>
+      <g transform="translate(300,0)"><rect x="10" y="180" width="140" height="60"/><path d="M20 180 C30 120 60 110 80 40 C100 110 130 120 140 180 Z"/><circle cx="80" cy="34" r="6"/></g>
+      <g transform="translate(560,0)"><path d="M20 240 C20 150 50 130 80 96 C110 130 140 150 140 240 Z"/><rect x="74" y="70" width="12" height="30"/><circle cx="80" cy="64" r="9"/><rect x="0" y="228" width="160" height="12"/></g>
+      <g transform="translate(800,0)"><rect x="30" y="120" width="26" height="120"/><rect x="18" y="108" width="50" height="16" rx="6"/><circle cx="43" cy="88" r="22" opacity=".9"/></g>
+      <g transform="translate(960,0)"><rect x="14" y="186" width="92" height="54"/><rect x="26" y="152" width="68" height="38"/><path d="M30 152 L60 106 L90 152 Z"/><circle cx="60" cy="100" r="6"/></g>
+    </g>
+  </svg>
+</div>
+
+<div class="top-strip">
+  <span><b>ASHA</b> · Confidential support space</span>
+  <span>Emergency <a href="tel:112">112</a> · Atrocities <a href="tel:14566">14566</a> · Tele-MANAS <a href="tel:14416">14416</a></span>
+</div>
+
+<header class="s-header">
+  <div class="header-inner">
+    <a href="index.html" class="brand">
+      <div class="logo asha-logo">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-label="Ashoka Chakra">
+          <g fill="none" stroke="#ffffff" stroke-width="4"><circle cx="50" cy="50" r="44"/><circle cx="50" cy="50" r="36" stroke-width="1.6" opacity=".55"/><g stroke-width="2.6" stroke-linecap="round" opacity=".95"><line x1="50" y1="8" x2="50" y2="16"/><line x1="50" y1="84" x2="50" y2="92"/><line x1="8" y1="50" x2="16" y2="50"/><line x1="84" y1="50" x2="92" y2="50"/><line x1="18.9" y1="18.9" x2="24.4" y2="24.4"/><line x1="75.6" y1="75.6" x2="81.1" y2="81.1"/><line x1="81.1" y1="18.9" x2="75.6" y2="24.4"/><line x1="24.4" y1="75.6" x2="18.9" y2="81.1"/><line x1="29" y1="11.7" x2="31.1" y2="19.3"/><line x1="68.9" y1="80.7" x2="71" y2="88.3"/><line x1="71" y1="11.7" x2="68.9" y2="19.3"/><line x1="31.1" y1="80.7" x2="29" y2="88.3"/><line x1="11.7" y1="29" x2="19.3" y2="31.1"/><line x1="80.7" y1="68.9" x2="88.3" y2="71"/><line x1="88.3" y1="29" x2="80.7" y2="31.1"/><line x1="19.3" y1="68.9" x2="11.7" y2="71"/><line x1="8.9" y1="41" x2="16.6" y2="43.1"/><line x1="83.4" y1="56.9" x2="91.1" y2="59"/><line x1="91.1" y1="41" x2="83.4" y2="43.1"/><line x1="16.6" y1="56.9" x2="8.9" y2="59"/><line x1="41" y1="8.9" x2="43.1" y2="16.6"/><line x1="56.9" y1="83.4" x2="59" y2="91.1"/><line x1="59" y1="8.9" x2="56.9" y2="16.6"/><line x1="43.1" y1="83.4" x2="41" y2="91.1"/></g></g>
+          <circle cx="50" cy="50" r="5" fill="#ffffff"/>
+        </svg>
+      </div>
+      <div class="brand-text">
+        <small>ASHA · AI-POWERED SUPPORT SYSTEM</small>
+        <strong>Support Chat</strong>
+        <span>Speak freely — someone is listening</span>
+      </div>
+    </a>
+    <div class="header-actions">
+      <a class="header-action" href="helpline.html">Helpline directory</a>
+      <a class="header-action" href="legal-support.html">Know your rights</a>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+
+  <div class="notice red">
+    <b>Need urgent help?</b> If you are in immediate danger or may harm yourself, contact local emergency services now or go to a safe person or place.
+  </div>
+
+  <section class="card chat-card">
+    <div class="chat" id="chat"><div class="msg bot">Hello. I am here to listen and support you. What would you like to share today?</div></div>
+    <div class="meta" id="meta">You are not alone. A support professional may join this conversation if extra help would be useful.</div>
+    <form id="f">
+      <button type="button" id="mic" title="Speak instead of typing">🎤</button>
+      <input id="m" placeholder="Type how you are feeling…" required autocomplete="off">
+      <button type="submit">Send</button>
+      <button type="button" id="mute" title="Read replies aloud on/off">🔊</button>
+    </form>
+    <div id="langbadge"></div>
+  </section>
+
+  <div class="quick-links">
+    <a href="tel:112">📞 Emergency 112</a>
+    <a href="tel:14566">📞 Against Atrocities 14566</a>
+    <a href="tel:14416">📞 Tele-MANAS 14416</a>
+    <a href="helpline.html">Full helpline directory</a>
+    <a href="legal-support.html">Your legal rights</a>
+  </div>
+
+  <p class="small-note">Everything you share stays confidential. Support indicators are not a diagnosis.</p>
+
+</main>
+
+<footer class="s-footer">
+  <div class="s-footer-inner">
+    <span>ASHA · AI-Powered Mental Health Monitoring</span>
+    <span><a href="index.html">Main portal</a> · <a href="helpline.html">Helplines</a> · <a href="legal-support.html">Rights &amp; Guidelines</a></span>
+  </div>
+</footer>
+
+<script>const id=localStorage.caseId||(localStorage.caseId='C-'+crypto.randomUUID().slice(0,8)),chat=document.querySelector('#chat'),f=document.querySelector('#f'),m=document.querySelector('#m'),SR=window.SpeechRecognition||window.webkitSpeechRecognition,mic=document.querySelector('#mic'),mute=document.querySelector('#mute');const detLang=t=>/^[\u0B80-\u0BFF\s.,!?]/.test(t)?'ta':/^[\u0C00-\u0C7F\s.,!?]/.test(t)?'te':/^[\u0D00-\u0D7F\s.,!?]/.test(t)?'ml':/^[\u0900-\u097F\s.,!?]/.test(t)?'hi':'';const LANG_NAMES={en:'English',hi:'Hindi',ta:'Tamil',te:'Telugu',ml:'Malayalam',de:'German',fr:'French',es:'Spanish',pt:'Portuguese',ru:'Russian',ar:'Arabic',zh:'Chinese',ja:'Japanese',ko:'Korean',bn:'Bengali',ur:'Urdu',kn:'Kannada',mr:'Marathi',gu:'Gujarati',pa:'Punjabi',it:'Italian',nl:'Dutch',tr:'Turkish',id:'Indonesian',vi:'Vietnamese',th:'Thai',fa:'Persian',pl:'Polish'};const langName=l=>LANG_NAMES[(l||'').slice(0,2)]||LANG_NAMES[l]||(l||'').toUpperCase();const srLocale=l=>({en:'en-IN',hi:'hi-IN',ta:'ta-IN',te:'te-IN',ml:'ml-IN',de:'de-DE',fr:'fr-FR',es:'es-ES',pt:'pt-BR',ru:'ru-RU',ar:'ar-SA',zh:'zh-CN',ja:'ja-JP',ko:'ko-KR',bn:'bn-IN',ur:'ur-PK',kn:'kn-IN',mr:'mr-IN',gu:'gu-IN',pa:'pa-IN',it:'it-IT'})[l]||l||'en-IN';const srPrior=()=>localStorage.samDetected||(navigator.language||'en-IN').slice(0,2);mute.textContent=localStorage.samMute==='1'?'🔇':'🔊';mute.onclick=()=>{localStorage.samMute=localStorage.samMute==='1'?'0':'1';mute.textContent=localStorage.samMute==='1'?'🔇':'🔊';if(localStorage.samMute==='1')try{speechSynthesis.cancel()}catch{}};let rec=null,listening=false,recFinal='';mic.onclick=()=>{if(!SR){alert('Voice input needs Chrome or Edge.');return}if(listening){rec.stop();return}try{speechSynthesis.cancel()}catch{}rec=new SR();rec.lang=srLocale(detLang(m.value)||srPrior());rec.interimResults=true;rec.continuous=false;recFinal='';listening=true;mic.classList.add('listening');mic.textContent='■';rec.onresult=e=>{let t='';for(let i=e.resultIndex;i<e.results.length;i++){t+=e.results[i][0].transcript;if(e.results[i].isFinal)recFinal+=e.results[i][0].transcript}m.value=t};rec.onend=()=>{listening=false;mic.classList.remove('listening');mic.textContent='🎤';if(recFinal.trim()){const dl=detLang(recFinal);if(dl)localStorage.samDetected=dl;m.value=recFinal.trim();f.requestSubmit()}};rec.onerror=()=>{listening=false;mic.classList.remove('listening');mic.textContent='🎤'};rec.start()};function speak(text,detected){if(detected){localStorage.samDetected=detected;const b=document.querySelector('#langbadge');if(b)b.textContent='🌐 You spoke '+langName(detected)+' — replying in '+langName(detected)}if(localStorage.samMute==='1')return;try{let u=new SpeechSynthesisUtterance(text);u.lang=srLocale(detected);speechSynthesis.cancel();speechSynthesis.speak(u)}catch{}}function add(t,c){let d=document.createElement('div');d.className='msg '+c;d.textContent=t;chat.append(d);chat.scrollTop=chat.scrollHeight}f.onsubmit=async e=>{e.preventDefault();let text=m.value.trim();if(!text)return;add(text,'me');m.value='';try{let r=await fetch('/api/chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({caseId:id,message:text,phone:localStorage.ashaPhone||''})}),d=await r.json();if(!r.ok)throw 0;add(d.reply,'bot');speak(d.reply,d.assessment&&d.assessment.language);meta.textContent='You are not alone — a support professional may join this conversation if extra help would be useful.'}catch{add('Connection unavailable. If you need urgent help, contact local emergency services.','bot')}};let seen=0;setInterval(async()=>{try{let r=await fetch('/api/cases/'+id);if(!r.ok)return;let c=await r.json();(c.messages||[]).forEach((msg,i)=>{if(i>=seen&&msg.role==='professional'){add(msg.text,'bot');speak(msg.text,c.language);meta.textContent='A support professional has joined this conversation.'}});seen=(c.messages||[]).length}catch{}},4000)</script>
+</body>
+</html>

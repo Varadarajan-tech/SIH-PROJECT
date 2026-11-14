@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ASHA · Professional Console</title>
+<link rel="stylesheet" href="theme.css">
+<link rel="stylesheet" href="asha-brand.css">
+<style>
+  .brand .logo.asha-logo{width:58px;height:58px;border-radius:50%;box-shadow:0 6px 18px rgba(11,61,122,.35),inset 0 1px 0 rgba(255,255,255,.25)}
+  .brand .logo.asha-logo svg{width:82%;height:82%}
+  body{display:flex;flex-direction:column}
+  main{flex:1}
+  #pmodal{display:none;position:fixed;inset:0;background:rgba(10,25,48,.55);backdrop-filter:blur(3px);z-index:50;align-items:center;justify-content:center}
+  #pmodalbox{background:#fff;max-width:720px;width:94%;max-height:86vh;overflow:auto;border-radius:16px;padding:22px;box-shadow:var(--shadow-lg)}
+  .tr{padding:10px 14px;margin:8px 0;border-radius:14px;max-width:85%;line-height:1.5;font-size:13.5px;box-shadow:0 1px 3px rgba(15,39,71,.07)}
+  .tc{background:linear-gradient(135deg,#e3effb,#d8e9f9);margin-left:auto;border-bottom-right-radius:4px}
+  .ta{background:#fff;border:1px solid #e6edf4;border-bottom-left-radius:4px}
+  .tr b{font-size:10.5px;color:var(--muted);letter-spacing:.4px;text-transform:uppercase}
+  .tag2{font-size:11px;color:var(--muted)}
+  table button,.viewbtn{background:linear-gradient(135deg,var(--green),var(--green-d));color:#fff;border:none;border-radius:8px;padding:8px 14px;font-size:11.5px;font-weight:600;cursor:pointer;margin:2px;transition:.15s}
+  table button:hover{transform:translateY(-1px)}
+  .viewbtn{background:#fff;color:var(--blue);border:1px solid var(--line)}
+  .viewbtn:hover{background:#f0f6fc}
+  #pmsg{flex:1;padding:10px 12px;border:1px solid #c9d6e4;border-radius:10px;font-size:13.5px;outline:none}
+  #pmsg:focus{border-color:var(--blue);box-shadow:0 0 0 3px var(--ring)}
+  .sendrow{display:flex;gap:8px;margin:12px 0}
+  .sendrow button{background:linear-gradient(135deg,var(--green),var(--green-d));color:#fff;border:none;border-radius:10px;padding:10px 18px;font-weight:700;cursor:pointer}
+</style>
+</head>
+<body>
+
+<!-- ASHA heritage backdrop: Ashoka Chakra + temple skyline -->
+<div class="asha-bg" aria-hidden="true">
+  <svg class="bg-chakra" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><g fill="none" stroke="#0b3d7a" stroke-width="4"><circle cx="50" cy="50" r="44"/><circle cx="50" cy="50" r="36" stroke-width="1.6" opacity=".55"/><g stroke-width="2.6" stroke-linecap="round" opacity=".95"><line x1="50.0" y1="8.0" x2="50.0" y2="16.0"/><line x1="60.9" y1="9.4" x2="58.8" y2="17.2"/><line x1="71.0" y1="13.6" x2="67.0" y2="20.6"/><line x1="79.7" y1="20.3" x2="74.0" y2="26.0"/><line x1="86.4" y1="29.0" x2="79.4" y2="33.0"/><line x1="90.6" y1="39.1" x2="82.8" y2="41.2"/><line x1="92.0" y1="50.0" x2="84.0" y2="50.0"/><line x1="90.6" y1="60.9" x2="82.8" y2="58.8"/><line x1="86.4" y1="71.0" x2="79.4" y2="67.0"/><line x1="79.7" y1="79.7" x2="74.0" y2="74.0"/><line x1="71.0" y1="86.4" x2="67.0" y2="79.4"/><line x1="60.9" y1="90.6" x2="58.8" y2="82.8"/><line x1="50.0" y1="92.0" x2="50.0" y2="84.0"/><line x1="39.1" y1="90.6" x2="41.2" y2="82.8"/><line x1="29.0" y1="86.4" x2="33.0" y2="79.4"/><line x1="20.3" y1="79.7" x2="26.0" y2="74.0"/><line x1="13.6" y1="71.0" x2="20.6" y2="67.0"/><line x1="9.4" y1="60.9" x2="17.2" y2="58.8"/><line x1="8.0" y1="50.0" x2="16.0" y2="50.0"/><line x1="9.4" y1="39.1" x2="17.2" y2="41.2"/><line x1="13.6" y1="29.0" x2="20.6" y2="33.0"/><line x1="20.3" y1="20.3" x2="26.0" y2="26.0"/><line x1="29.0" y1="13.6" x2="33.0" y2="20.6"/><line x1="39.1" y1="9.4" x2="41.2" y2="17.2"/></g></g><circle cx="50" cy="50" r="5" fill="#0b3d7a"/></svg>
+  <svg class="bg-temples" viewBox="0 0 1200 240" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg"><g fill="#0b3d7a" opacity="0.85"><g transform="translate(60,0)"><rect x="20" y="170" width="120" height="70"/><rect x="34" y="130" width="92" height="44"/><rect x="46" y="96" width="68" height="38"/><path d="M50 96 L80 40 L110 96 Z"/><circle cx="80" cy="34" r="7"/></g><g transform="translate(300,0)"><rect x="10" y="180" width="140" height="60"/><path d="M20 180 C30 120 60 110 80 40 C100 110 130 120 140 180 Z"/><circle cx="80" cy="34" r="6"/></g><g transform="translate(560,0)"><path d="M20 240 C20 150 50 130 80 96 C110 130 140 150 140 240 Z"/><rect x="74" y="70" width="12" height="30"/><circle cx="80" cy="64" r="9"/><rect x="0" y="228" width="160" height="12"/></g><g transform="translate(800,0)"><rect x="30" y="120" width="26" height="120"/><rect x="18" y="108" width="50" height="16" rx="6"/><circle cx="43" cy="88" r="22" opacity=".9"/></g><g transform="translate(960,0)"><rect x="14" y="186" width="92" height="54"/><rect x="26" y="152" width="68" height="38"/><path d="M30 152 L60 106 L90 152 Z"/><circle cx="60" cy="100" r="6"/></g></g></svg>
+</div>
+
+<div class="top-strip">
+  <span><b>ASHA</b> · Professional Console</span>
+  <span>Emergency <a href="tel:112">112</a> · Atrocities <a href="tel:14566">14566</a> · Tele-MANAS <a href="tel:14416">14416</a></span>
+</div>
+
+<header class="s-header">
+  <div class="header-inner">
+    <a href="index.html" class="brand">
+      <div class="logo asha-logo" style="background:radial-gradient(circle at 30% 25%,#2eaa5e,#13813d 75%)"><svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-label="Ashoka Chakra"><g fill="none" stroke="#ffffff" stroke-width="4"><circle cx="50" cy="50" r="44"/><circle cx="50" cy="50" r="36" stroke-width="1.6" opacity=".55"/><g stroke-width="2.6" stroke-linecap="round" opacity=".95"><line x1="50.0" y1="8.0" x2="50.0" y2="16.0"/><line x1="60.9" y1="9.4" x2="58.8" y2="17.2"/><line x1="71.0" y1="13.6" x2="67.0" y2="20.6"/><line x1="79.7" y1="20.3" x2="74.0" y2="26.0"/><line x1="86.4" y1="29.0" x2="79.4" y2="33.0"/><line x1="90.6" y1="39.1" x2="82.8" y2="41.2"/><line x1="92.0" y1="50.0" x2="84.0" y2="50.0"/><line x1="90.6" y1="60.9" x2="82.8" y2="58.8"/><line x1="86.4" y1="71.0" x2="79.4" y2="67.0"/><line x1="79.7" y1="79.7" x2="74.0" y2="74.0"/><line x1="71.0" y1="86.4" x2="67.0" y2="79.4"/><line x1="60.9" y1="90.6" x2="58.8" y2="82.8"/><line x1="50.0" y1="92.0" x2="50.0" y2="84.0"/><line x1="39.1" y1="90.6" x2="41.2" y2="82.8"/><line x1="29.0" y1="86.4" x2="33.0" y2="79.4"/><line x1="20.3" y1="79.7" x2="26.0" y2="74.0"/><line x1="13.6" y1="71.0" x2="20.6" y2="67.0"/><line x1="9.4" y1="60.9" x2="17.2" y2="58.8"/><line x1="8.0" y1="50.0" x2="16.0" y2="50.0"/><line x1="9.4" y1="39.1" x2="17.2" y2="41.2"/><line x1="13.6" y1="29.0" x2="20.6" y2="33.0"/><line x1="20.3" y1="20.3" x2="26.0" y2="26.0"/><line x1="29.0" y1="13.6" x2="33.0" y2="20.6"/><line x1="39.1" y1="9.4" x2="41.2" y2="17.2"/></g></g><circle cx="50" cy="50" r="5" fill="#ffffff"/></svg></div>
+      <div class="brand-text">
+        <small>MENTAL HEALTH PROFESSIONAL ACCESS</small>
+        <strong>Professional Console</strong>
+        <span>Authorized access · handle with care</span>
+      </div>
+    </a>
+    <div class="header-actions">
+      <a class="header-action" href="legal-support.html">Acts &amp; Guidelines</a>
+      <a class="header-action" href="helpline.html">Helplines</a>
+      <a class="header-action" href="index.html">Main portal</a>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+
+  <div class="notice blue">
+    <b>Human review required:</b> AI scores are prioritisation signals, not diagnoses. Review context and use local emergency procedures for imminent risk.
+  </div>
+
+  <section class="card" style="margin-top:16px;overflow:hidden">
+    <div class="table-wrap" id="list"><div class="empty">Loading active cases…</div></div>
+  </section>
+
+</main>
+
+<div id="pmodal"><div id="pmodalbox"></div></div>
+
+<footer class="s-footer">
+  <div class="s-footer-inner">
+    <span>ASHA · AI-Powered Mental Health Monitoring</span>
+    <span><a href="index.html">Main portal</a> · <a href="legal-support.html">Rights &amp; Guidelines</a> · <a href="helpline.html">Helplines</a></span>
+  </div>
+</footer>
+
+<script>async function act(id,a){let note=a==='report'?prompt('Report summary for the authorised government official:'):'';if(note===null)return;await fetch(`/api/cases/${id}/${a}`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({note})});load()}function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
+let pviewId='';
+function transcriptHtml(c){const phone=c.phone?`<div style="margin-bottom:10px;font-size:12px;color:#23405e"><b>Verified contact:</b> ${esc(c.phone)} <span style="color:#5f7086">(OTP-verified ${esc((c.phoneVerifiedAt||'').slice(0,10))})</span></div>`:'';return phone+(c.messages||[]).map(m=>`<div class="tr ${m.role==='citizen'?'tc':'ta'}"><b>${m.role==='citizen'?'Victim':m.role==='professional'?'Support professional':'ASHA'}</b><br>${esc(m.text)}</div>`).join('')||'<p style="color:#5f7086;font-size:13px">No messages yet.</p>'}
+async function view(cid){let cs=await(await fetch('/api/cases')).json(),c=cs.find(x=>x.id===cid);if(!c)return;pviewId=cid;let pq=(c.phq9||[]).map(p=>`<li>${new Date(p.takenAt).toLocaleString()} — <b>${p.total}/27 ${p.severity}</b>${p.flagged?' <span class="critical">⚠ item-9 flagged</span>':''}</li>`).join('')||'<li>No check-ins yet</li>';pmodalbox.innerHTML=`<div style="display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:6px"><b>Case ${esc(c.id)} — conversation</b><button class="viewbtn" onclick="pviewId='';pmodal.style.display='none'">Close</button></div><p class="tag2">Language: ${esc((c.language||'en').toUpperCase())} · Status: ${esc(c.status)}${c.status==='Professional takeover'?' · <b style="color:#1f9d61">You are now chatting as the support professional</b>':''}</p><div id="ptranscript" style="margin:10px 0">${transcriptHtml(c)}</div>${c.status==='Professional takeover'?`<div class="sendrow"><input id="pmsg" placeholder="Type your reply to the victim…" onkeydown="if(event.key==='Enter')psend('${esc(c.id)}')"><button onclick="psend('${esc(c.id)}')">Send</button></div>`:''}<b style="font-size:13px">Well-being screening history (conversational PHQ-9)</b><ul style="font-size:12.5px;color:#42566d;margin:8px 0 0 18px">${pq}</ul><p class="tag2" style="margin-top:8px">AI scores are prioritisation signals, not diagnoses.</p>`;pmodal.style.display='flex'}
+function refreshTranscript(){if(!pviewId)return;fetch('/api/cases').then(r=>r.json()).then(cs=>{let c=cs.find(x=>x.id===pviewId),el=document.querySelector('#ptranscript');if(c&&el)el.innerHTML=transcriptHtml(c)})}
+async function psend(cid){let inp=document.querySelector('#pmsg'),t=inp?inp.value.trim():'';if(!t)return;inp.value='';await fetch(`/api/cases/${cid}/message`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({text:t})});refreshTranscript()}
+async function load(){let cs=await(await fetch('/api/cases')).json(),x=list;if(!cs.length){x.className='empty';x.textContent='No active chat cases yet.';return}x.className='table-wrap';x.innerHTML=`<table><tr><th>Case</th><th>Priority</th><th>Emotion</th><th>Screening</th><th>Latest message</th><th>Status</th><th>Actions</th></tr>${cs.map(c=>`<tr><td><b>${c.id}</b></td><td class="${c.level==='Critical'?'critical':''}">${c.level} · ${c.score}/100</td><td>${c.emotion||'—'}</td><td>${c.phq9?`${c.phq9[c.phq9.length-1].total}/27 ${c.phq9[c.phq9.length-1].severity}${c.phq9[c.phq9.length-1].flagged?' <span class="critical">⚠ item-9</span>':''}`:'—'}</td><td>${esc(c.lastMessage||'')}</td><td>${esc(c.status)}</td><td><button class="viewbtn" onclick="view('${c.id}')">View chat</button> ${c.status==='AI monitoring'?`<button onclick="act('${c.id}','takeover')">Take over</button>`:''} ${c.escalation==='immediate'&&c.status!=='Reported to official'?`<button style="background:linear-gradient(135deg,#d9534f,#a9302c)" onclick="act('${c.id}','report')">Report emergency</button>`:''}</td></tr>`).join('')}</table>`;if(pviewId&&pmodal.style.display==='flex')refreshTranscript()}load();setInterval(load,10000)</script>
+</body>
+</html>

@@ -1,0 +1,136 @@
+/* ============================================================
+   ASHA — brand layer (Ashoka Chakra · temple motifs · tricolour)
+   Linked AFTER theme.css on every page. One file controls the
+   identity across the whole platform.
+   ============================================================ */
+
+/* ---------- ASHOKA CHAKRA LOGO ---------- */
+
+/* Replaces the old square logo text with the 24-spoke wheel */
+.asha-logo {
+    position: relative;
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 25%, #1668c1, #0b3d7a 70%);
+    box-shadow: 0 6px 18px rgba(11, 61, 122, .35), inset 0 1px 0 rgba(255,255,255,.25);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+}
+
+.asha-logo svg {
+    width: 82%;
+    height: 82%;
+    display: block;
+}
+
+.asha-logo.saffron {
+    background: radial-gradient(circle at 30% 25%, #ff9933, #cc6a00 75%);
+    box-shadow: 0 6px 18px rgba(204, 106, 0, .3), inset 0 1px 0 rgba(255,255,255,.3);
+}
+
+.asha-logo.green {
+    background: radial-gradient(circle at 30% 25%, #2eaa5e, #13813d 75%);
+    box-shadow: 0 6px 18px rgba(19, 129, 61, .3), inset 0 1px 0 rgba(255,255,255,.25);
+}
+
+.asha-logo.purple {
+    background: radial-gradient(circle at 30% 25%, #8a63c9, #5b3a99 75%);
+    box-shadow: 0 6px 18px rgba(91, 58, 153, .3), inset 0 1px 0 rgba(255,255,255,.25);
+}
+
+/* ---------- ASHA WORDMARK ---------- */
+
+.asha-name {
+    color: #0b3d7a;
+    letter-spacing: 4px;
+    font-weight: 800;
+}
+
+/* ---------- TRICOLOUR ACCENT BAR ---------- */
+
+.tricolour {
+    height: 4px;
+    background: linear-gradient(90deg,
+            #ff9933 0%, #ff9933 33.3%,
+            #f8f6f2 33.3%, #f8f6f2 66.6%,
+            #138808 66.6%, #138808 100%);
+    border: 0;
+}
+
+/* ---------- TEMPLE + CHAKRA PAGE BACKGROUND ---------- */
+
+/* Fixed, unobtrusive heritage backdrop behind page content */
+.asha-bg {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    overflow: hidden;
+    background:
+        radial-gradient(1100px 500px at 85% -10%, rgba(255, 153, 51, .07), transparent 60%),
+        radial-gradient(900px 500px at -10% 110%, rgba(19, 136, 8, .06), transparent 60%),
+        linear-gradient(180deg, #f7f9fc 0%, #f2f5f9 100%);
+}
+
+.asha-bg svg {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 42vh;
+    opacity: .5;
+}
+
+.asha-bg .bg-chakra {
+    position: absolute;
+    top: 6vh;
+    right: -12vw;
+    width: 44vw;
+    max-width: 620px;
+    height: auto;
+    opacity: .07;
+    animation: chakra-turn 140s linear infinite;
+}
+
+@keyframes chakra-turn {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .asha-bg .bg-chakra { animation: none; }
+}
+
+/* ---------- EMBLEM RIBBON (login pages, hero) ---------- */
+
+.asha-emblem {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 11px;
+    letter-spacing: 1px;
+    color: #5f7086;
+    font-weight: 600;
+}
+
+.asha-emblem .asha-logo {
+    width: 34px;
+    height: 34px;
+}
+
+/* ---------- FOOTER MOTIF ---------- */
+
+.asha-footer-mark {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    opacity: .9;
+}
+
+.asha-footer-mark .asha-logo {
+    width: 30px;
+    height: 30px;
+}

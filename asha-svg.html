@@ -1,0 +1,88 @@
+<!-- ============================================================
+     ASHA reusable SVG snippets.
+     Pure inline SVG — no external images, works offline.
+     Copy the <svg> blocks below into pages as needed.
+     ============================================================ -->
+
+<!-- ASHOKA CHAKRA (24 spokes) — logo / decorative use -->
+<svg class="chakra" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <g fill="none" stroke="#ffffff" stroke-width="4">
+    <circle cx="50" cy="50" r="44"/>
+    <circle cx="50" cy="50" r="36" stroke-width="1.6" opacity=".55"/>
+    <g stroke-width="2.6" stroke-linecap="round" opacity=".95">
+      <line x1="50" y1="8"  x2="50" y2="16"/>
+      <line x1="50" y1="84" x2="50" y2="92"/>
+      <line x1="8"  y1="50" x2="16" y2="50"/>
+      <line x1="84" y1="50" x2="92" y2="50"/>
+      <line x1="18.9" y1="18.9" x2="24.4" y2="24.4"/>
+      <line x1="75.6" y1="75.6" x2="81.1" y2="81.1"/>
+      <line x1="81.1" y1="18.9" x2="75.6" y2="24.4"/>
+      <line x1="24.4" y1="75.6" x2="18.9" y2="81.1"/>
+      <line x1="29" y1="11.7" x2="31.1" y2="19.3"/>
+      <line x1="68.9" y1="80.7" x2="71"  y2="88.3"/>
+      <line x1="71"  y1="11.7" x2="68.9" y2="19.3"/>
+      <line x1="31.1" y1="80.7" x2="29"  y2="88.3"/>
+      <line x1="11.7" y1="29" x2="19.3" y2="31.1"/>
+      <line x1="80.7" y1="68.9" x2="88.3" y2="71"/>
+      <line x1="88.3" y1="29" x2="80.7" y2="31.1"/>
+      <line x1="19.3" y1="68.9" x2="11.7" y2="71"/>
+      <line x1="8.9"  y1="41" x2="16.6" y2="43.1"/>
+      <line x1="83.4" y1="56.9" x2="91.1" y2="59"/>
+      <line x1="91.1" y1="41" x2="83.4" y2="43.1"/>
+      <line x1="16.6" y1="56.9" x2="8.9"  y2="59"/>
+      <line x1="41"  y1="8.9" x2="43.1" y2="16.6"/>
+      <line x1="56.9" y1="83.4" x2="59"  y2="91.1"/>
+      <line x1="59"  y1="8.9" x2="56.9" y2="16.6"/>
+      <line x1="43.1" y1="83.4" x2="41"  y2="91.1"/>
+    </g>
+  </g>
+  <circle cx="50" cy="50" r="5" fill="#ffffff"/>
+</svg>
+
+<!-- TEMPLE SKYLINE (decorative background strip) -->
+<svg viewBox="0 0 1200 240" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg">
+  <g fill="#0b3d7a" opacity="0.85">
+    <!-- gopuram (South Indian temple tower) -->
+    <g transform="translate(60,0)">
+      <rect x="20" y="170" width="120" height="70"/>
+      <rect x="34" y="130" width="92" height="44"/>
+      <rect x="46" y="96" width="68" height="38"/>
+      <path d="M50 96 L80 40 L110 96 Z"/>
+      <circle cx="80" cy="34" r="7"/>
+    </g>
+    <!-- shikhara (North Indian curved spire) -->
+    <g transform="translate(300,0)">
+      <rect x="10" y="180" width="140" height="60"/>
+      <path d="M20 180 C30 120 60 110 80 40 C100 110 130 120 140 180 Z"/>
+      <circle cx="80" cy="34" r="6"/>
+      <rect x="36" y="150" width="88" height="30" fill="#f2f5f9" opacity=".18"/>
+    </g>
+    <!-- stupa -->
+    <g transform="translate(560,0)">
+      <path d="M20 240 C20 150 50 130 80 96 C110 130 140 150 140 240 Z"/>
+      <rect x="74" y="70" width="12" height="30"/>
+      <circle cx="80" cy="64" r="9"/>
+      <rect x="0" y="228" width="160" height="12"/>
+    </g>
+    <!-- ashoka pillar fragment -->
+    <g transform="translate(800,0)">
+      <rect x="30" y="120" width="26" height="120"/>
+      <rect x="18" y="108" width="50" height="16" rx="6"/>
+      <circle cx="43" cy="88" r="22" opacity=".9"/>
+      <circle cx="43" cy="88" r="15" fill="#f2f5f9" opacity=".3"/>
+    </g>
+    <!-- second gopuram, smaller -->
+    <g transform="translate(960,0)">
+      <rect x="14" y="186" width="92" height="54"/>
+      <rect x="26" y="152" width="68" height="38"/>
+      <path d="M30 152 L60 106 L90 152 Z"/>
+      <circle cx="60" cy="100" r="6"/>
+    </g>
+  </g>
+</svg>
+
+<!-- Usage notes:
+     Logo:  <span class="asha-logo"><svg class="chakra" ...>...</svg></span>
+     Badge: <div class="asha-bg"><svg class="bg-chakra" ...>...</svg>
+            <svg viewBox="0 0 1200 240" ...>temple skyline</svg></div>
+     Colours via .asha-logo.saffron / .green / .purple for role pages -->

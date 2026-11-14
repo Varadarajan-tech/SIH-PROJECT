@@ -1,0 +1,2016 @@
+    <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+        content="AI-Powered Dynamic Mental Health Monitoring and Distress Prediction System for Victims of Atrocities">
+
+    <title>
+        AI Mental Health Monitoring & Distress Prediction System
+    </title>
+
+
+    <!-- GOOGLE FONTS -->
+
+    <link rel="preconnect"
+        href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+
+    <style>
+
+        /* =========================================
+           RESET
+        ========================================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+
+        body {
+
+            min-height: 100vh;
+
+            font-family:
+                "Inter",
+                Arial,
+                sans-serif;
+
+            background: #f4f7f9;
+
+            color: #1f2937;
+
+            overflow-x: hidden;
+        }
+
+
+        button,
+        input,
+        select {
+            font: inherit;
+        }
+
+
+        a {
+            color: inherit;
+        }
+
+
+        /* =========================================
+           TOP BAR
+        ========================================= */
+
+        .top-strip {
+
+            height: 34px;
+
+            background: #17212c;
+
+            color: white;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            padding: 0 5%;
+
+            font-size: 11px;
+
+        }
+
+
+        .top-left,
+        .top-right {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 18px;
+
+        }
+
+
+        .top-link {
+
+            cursor: pointer;
+
+            opacity: .9;
+
+        }
+
+
+        .top-link:hover {
+
+            text-decoration: underline;
+
+        }
+
+
+        /* =========================================
+           HEADER
+        ========================================= */
+
+        .official-header {
+
+            background: white;
+
+            border-bottom:
+                1px solid #dce2e8;
+
+        }
+
+
+        .header-inner {
+
+            width: min(1200px, 92%);
+
+            margin: auto;
+
+            min-height: 95px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 30px;
+
+        }
+
+
+        /* =========================================
+           BRAND
+        ========================================= */
+
+        .brand {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 15px;
+
+            text-decoration: none;
+
+        }
+
+
+        .logo {
+
+            width: 58px;
+
+            height: 58px;
+
+            border-radius: 50%;
+
+            background: #0d5b9a;
+
+            color: white;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            text-align: center;
+
+            font-size: 11px;
+
+            font-weight: 700;
+
+            line-height: 1.2;
+
+            box-shadow:
+                0 4px 12px rgba(13,91,154,.2);
+
+        }
+
+
+        .brand-text small {
+
+            display: block;
+
+            color: #6b7280;
+
+            font-size: 10px;
+
+            letter-spacing: .7px;
+
+            margin-bottom: 5px;
+
+        }
+
+
+        .brand-text strong {
+
+            display: block;
+
+            color: #172333;
+
+            font-size: 18px;
+
+            line-height: 1.25;
+
+        }
+
+
+        .brand-text span {
+
+            display: block;
+
+            margin-top: 4px;
+
+            font-size: 11px;
+
+            color: #6b7280;
+
+        }
+
+
+        /* =========================================
+           HEADER BUTTONS
+        ========================================= */
+
+        .header-actions {
+
+            display: flex;
+
+            gap: 10px;
+
+        }
+
+
+        .header-action {
+
+            padding: 9px 14px;
+
+            border:
+                1px solid #d6dee6;
+
+            background: white;
+
+            color: #374151;
+
+            border-radius: 4px;
+
+            cursor: pointer;
+
+            font-size: 11px;
+
+            transition: .2s;
+
+        }
+
+
+        .header-action:hover {
+
+            background: #f1f6fa;
+
+        }
+
+
+        /* =========================================
+           NAVIGATION
+        ========================================= */
+
+        .navigation {
+
+            background: #0d5b9a;
+
+            color: white;
+
+            border-bottom:
+                4px solid #35a56a;
+
+        }
+
+
+        .nav-inner {
+
+            width: min(1200px, 92%);
+
+            margin: auto;
+
+            min-height: 48px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+        }
+
+
+        .nav-links {
+
+            display: flex;
+
+            align-items: center;
+
+            flex-wrap: wrap;
+
+        }
+
+
+        .nav-links a {
+
+            height: 48px;
+
+            display: flex;
+
+            align-items: center;
+
+            padding: 0 17px;
+
+            text-decoration: none;
+
+            font-size: 12px;
+
+            border-right:
+                1px solid rgba(255,255,255,.12);
+
+        }
+
+
+        .nav-links a:hover {
+
+            background:
+                rgba(255,255,255,.12);
+
+        }
+
+
+        .nav-status {
+
+            font-size: 10px;
+
+            opacity: .9;
+
+        }
+
+
+        /* =========================================
+           HERO
+        ========================================= */
+
+        .hero-section {
+
+            background:
+
+                linear-gradient(
+                    135deg,
+                    #edf6fb 0%,
+                    #f8fcfa 100%
+                );
+
+            border-bottom:
+                1px solid #dce4e9;
+
+        }
+
+
+        .hero-inner {
+
+            width: min(1200px, 92%);
+
+            margin: auto;
+
+            min-height: 380px;
+
+            display: grid;
+
+            grid-template-columns:
+                1.3fr .7fr;
+
+            gap: 60px;
+
+            align-items: center;
+
+        }
+
+
+        .hero-copy {
+
+            padding: 55px 0;
+
+        }
+
+
+        .hero-kicker {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+            color: #0d5b9a;
+
+            font-size: 11px;
+
+            font-weight: 700;
+
+            letter-spacing: 1px;
+
+            text-transform: uppercase;
+
+            margin-bottom: 15px;
+
+        }
+
+
+        .hero-kicker::before {
+
+            content: "";
+
+            width: 28px;
+
+            height: 3px;
+
+            background: #35a56a;
+
+        }
+
+
+        .hero-copy h1 {
+
+            font-size:
+                clamp(2.2rem, 4vw, 3.8rem);
+
+            line-height: 1.1;
+
+            color: #172333;
+
+            letter-spacing: -1.5px;
+
+        }
+
+
+        .hero-copy p {
+
+            max-width: 760px;
+
+            margin-top: 18px;
+
+            color: #5f6d7d;
+
+            font-size: 15px;
+
+            line-height: 1.8;
+
+        }
+
+
+        .hero-note {
+
+            margin-top: 20px;
+
+            color: #6f7d8d;
+
+            font-size: 12px;
+
+        }
+
+
+        /* =========================================
+           HERO INFORMATION PANEL
+        ========================================= */
+
+        .hero-panel {
+
+            background: white;
+
+            padding: 25px;
+
+            border-radius: 8px;
+
+            border:
+                1px solid #dce4e9;
+
+            box-shadow:
+                0 12px 30px rgba(31,41,55,.08);
+
+        }
+
+
+        .hero-panel-title {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            margin-bottom: 18px;
+
+        }
+
+
+        .hero-panel-title strong {
+
+            font-size: 14px;
+
+            color: #253548;
+
+        }
+
+
+        .status-active {
+
+            color: #198754;
+
+            font-size: 10px;
+
+            font-weight: 700;
+
+        }
+
+
+        .status-line {
+
+            display: grid;
+
+            grid-template-columns:
+                9px 1fr;
+
+            gap: 10px;
+
+            margin-top: 14px;
+
+        }
+
+
+        .status-dot {
+
+            width: 9px;
+
+            height: 9px;
+
+            border-radius: 50%;
+
+            background: #35a56a;
+
+            margin-top: 4px;
+
+        }
+
+
+        .status-line p {
+
+            font-size: 11px;
+
+            line-height: 1.6;
+
+            color: #657384;
+
+        }
+
+
+        /* =========================================
+           FEATURES SECTION
+        ========================================= */
+
+        .feature-section {
+
+            background: white;
+
+            padding: 55px 0;
+
+        }
+
+
+        .feature-container {
+
+            width: min(1200px, 92%);
+
+            margin: auto;
+
+        }
+
+
+        .section-heading {
+
+            text-align: center;
+
+            margin-bottom: 35px;
+
+        }
+
+
+        .eyebrow {
+
+            display: block;
+
+            margin-bottom: 8px;
+
+            color: #0d5b9a;
+
+            font-size: 10px;
+
+            font-weight: 700;
+
+            letter-spacing: 1.2px;
+
+            text-transform: uppercase;
+
+        }
+
+
+        .section-heading h2 {
+
+            font-size: 28px;
+
+            color: #1f2937;
+
+            margin-bottom: 10px;
+
+        }
+
+
+        .section-heading p {
+
+            max-width: 700px;
+
+            margin: auto;
+
+            color: #6b7787;
+
+            font-size: 13px;
+
+            line-height: 1.7;
+
+        }
+
+
+        .feature-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 20px;
+
+        }
+
+
+        .feature-card {
+
+            padding: 24px;
+
+            border:
+                1px solid #dce3ea;
+
+            border-radius: 7px;
+
+            background: #ffffff;
+
+            transition: .2s;
+
+        }
+
+
+        .feature-card:hover {
+
+            transform:
+                translateY(-4px);
+
+            box-shadow:
+                0 10px 25px rgba(31,41,55,.08);
+
+        }
+
+
+        .feature-icon {
+
+            width: 45px;
+
+            height: 45px;
+
+            border-radius: 8px;
+
+            background: #eaf4fb;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 20px;
+
+            margin-bottom: 15px;
+
+        }
+
+
+        .feature-card h3 {
+
+            font-size: 16px;
+
+            margin-bottom: 9px;
+
+            color: #243245;
+
+        }
+
+
+        .feature-card p {
+
+            color: #687586;
+
+            font-size: 12px;
+
+            line-height: 1.7;
+
+        }
+
+
+        /* =========================================
+           ROLE SECTION
+        ========================================= */
+
+        .role-section {
+
+            background: #f5f8fa;
+
+            padding: 55px 0 65px;
+
+        }
+
+
+        .role-container {
+
+            width: min(1200px, 92%);
+
+            margin: auto;
+
+        }
+
+
+        .role-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 18px;
+
+        }
+
+
+        .role-card {
+
+            min-height: 245px;
+
+            padding: 25px;
+
+            background: white;
+
+            border:
+                1px solid #dbe2e9;
+
+            border-top:
+                5px solid #0d5b9a;
+
+            border-radius: 6px;
+
+            cursor: pointer;
+
+            transition: .25s;
+
+        }
+
+
+        .role-card:nth-child(2) {
+
+            border-top-color: #35a56a;
+
+        }
+
+
+        .role-card:nth-child(3) {
+
+            border-top-color: #7352a8;
+
+        }
+
+
+        .role-card:nth-child(4) {
+
+            border-top-color: #c78319;
+
+        }
+
+
+        .role-card:hover {
+
+            transform:
+                translateY(-4px);
+
+            box-shadow:
+                0 12px 30px rgba(31,41,55,.10);
+
+        }
+
+
+        .role-number {
+
+            color: #8492a2;
+
+            font-size: 10px;
+
+            font-weight: 700;
+
+            letter-spacing: 1px;
+
+            margin-bottom: 18px;
+
+        }
+
+
+        .role-card h3 {
+
+            font-size: 18px;
+
+            margin-bottom: 12px;
+
+            color: #1f2937;
+
+        }
+
+
+        .role-card p {
+
+            color: #6b7787;
+
+            font-size: 12px;
+
+            line-height: 1.7;
+
+            min-height: 65px;
+
+        }
+
+
+        .role-card-action {
+
+            display: inline-flex;
+
+            gap: 7px;
+
+            margin-top: 20px;
+
+            color: #0d5b9a;
+
+            font-size: 11px;
+
+            font-weight: 700;
+
+        }
+
+
+        /* =========================================
+           EMERGENCY SECTION
+        ========================================= */
+
+        .support-section {
+
+            background: #eaf4fb;
+
+            padding: 45px 0;
+
+        }
+
+
+        .support-box {
+
+            width: min(1200px, 92%);
+
+            margin: auto;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            gap: 30px;
+
+        }
+
+
+        .support-box h2 {
+
+            color: #1d344a;
+
+            font-size: 24px;
+
+            margin-bottom: 10px;
+
+        }
+
+
+        .support-box p {
+
+            color: #617082;
+
+            font-size: 13px;
+
+            line-height: 1.7;
+
+            max-width: 750px;
+
+        }
+
+
+        .support-button {
+
+            padding: 13px 22px;
+
+            background: #0d5b9a;
+
+            color: white;
+
+            border: none;
+
+            border-radius: 5px;
+
+            cursor: pointer;
+
+            font-size: 12px;
+
+            font-weight: 700;
+
+            white-space: nowrap;
+
+        }
+
+
+        .support-button:hover {
+
+            background: #084876;
+
+        }
+
+
+        /* =========================================
+           FOOTER
+        ========================================= */
+
+        .footer {
+
+            background: #17212c;
+
+            color: #cbd5e1;
+
+            border-top:
+                4px solid #35a56a;
+
+            padding: 30px 0;
+
+        }
+
+
+        .footer-inner {
+
+            width: min(1200px, 92%);
+
+            margin: auto;
+
+            display: grid;
+
+            grid-template-columns:
+                1.3fr .8fr .8fr;
+
+            gap: 35px;
+
+        }
+
+
+        .footer h4 {
+
+            color: white;
+
+            font-size: 13px;
+
+            margin-bottom: 10px;
+
+        }
+
+
+        .footer p,
+        .footer a {
+
+            color: #aeb9c5;
+
+            font-size: 11px;
+
+            line-height: 1.8;
+
+            text-decoration: none;
+
+        }
+
+
+        .footer a:hover {
+
+            text-decoration: underline;
+
+        }
+
+
+        .footer-bottom {
+
+            width: min(1200px, 92%);
+
+            margin: 20px auto 0;
+
+            padding-top: 15px;
+
+            border-top:
+                1px solid rgba(255,255,255,.1);
+
+            color: #83909d;
+
+            font-size: 10px;
+
+        }
+
+
+        /* =========================================
+           TABLET
+        ========================================= */
+
+        @media (max-width: 950px) {
+
+            .hero-inner {
+
+                grid-template-columns: 1fr;
+
+                padding: 30px 0 45px;
+
+                gap: 20px;
+
+            }
+
+
+            .feature-grid {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+
+            }
+
+
+            .role-grid {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+
+            }
+
+
+            .footer-inner {
+
+                grid-template-columns:
+                    1fr 1fr;
+
+            }
+
+        }
+
+
+        /* =========================================
+           MOBILE
+        ========================================= */
+
+        @media (max-width: 650px) {
+
+            .top-strip {
+
+                font-size: 9px;
+
+                padding: 0 4%;
+
+            }
+
+
+            .top-right {
+
+                display: none;
+
+            }
+
+
+            .header-inner {
+
+                min-height: 75px;
+
+            }
+
+
+            .logo {
+
+                width: 45px;
+
+                height: 45px;
+
+                font-size: 8px;
+
+            }
+
+
+            .brand-text strong {
+
+                font-size: 13px;
+
+            }
+
+
+            .brand-text span {
+
+                font-size: 8px;
+
+            }
+
+
+            .header-actions {
+
+                display: none;
+
+            }
+
+
+            .nav-status {
+
+                display: none;
+
+            }
+
+
+            .nav-links {
+
+                width: 100%;
+
+                justify-content: center;
+
+            }
+
+
+            .nav-links a {
+
+                padding: 0 8px;
+
+                font-size: 9px;
+
+            }
+
+
+            .hero-copy h1 {
+
+                font-size: 2.3rem;
+
+            }
+
+
+            .feature-grid {
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+            .role-grid {
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+            .support-box {
+
+                flex-direction: column;
+
+                align-items: flex-start;
+
+            }
+
+
+            .footer-inner {
+
+                grid-template-columns: 1fr;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================================
+         TOP BAR
+    ========================================= -->
+
+    <div class="top-strip">
+
+        <div class="top-left">
+
+            <span>AI HEALTH SUPPORT PLATFORM</span>
+
+            <span>|</span>
+
+            <span>Helpline 14566 · Tele-MANAS 14416 · Emergency 112</span>
+
+        </div>
+
+
+        <div class="top-right">
+
+            <span class="top-link">Accessibility</span>
+
+            <span class="top-link">Privacy</span>
+
+            <span class="top-link">A-</span>
+
+            <span class="top-link">A</span>
+
+            <span class="top-link">A+</span>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================================
+         HEADER
+    ========================================= -->
+
+    <header class="official-header">
+
+        <div class="header-inner">
+
+            <a href="index.html"
+                class="brand">
+
+                <div class="logo">
+                    AI<br>
+                    CARE
+                </div>
+
+
+                <div class="brand-text">
+
+                    <small>
+                        AI-POWERED SUPPORT SYSTEM
+                    </small>
+
+                    <strong>
+                        Mental Health Monitoring
+                    </strong>
+
+                    <span>
+                        Dynamic Distress Prediction & Support Platform
+                    </span>
+
+                </div>
+
+            </a>
+
+
+            <div class="header-actions">
+
+                <button
+                    class="header-action"
+                    onclick="window.location.href='index.html'">
+
+                    Home
+
+                </button>
+
+
+                <button
+                    class="header-action"
+                    onclick="window.location.href='helpline.html'">
+
+                    Help
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- =========================================
+         NAVIGATION
+    ========================================= -->
+
+    <nav class="navigation">
+
+        <div class="nav-inner">
+
+            <div class="nav-links">
+
+                <a href="index.html">
+                    Home
+                </a>
+
+                <a href="#features">
+                    System Features
+                </a>
+
+                <a href="#access">
+                    Access Portal
+                </a>
+
+                <a href="legal-support.html">
+                    Legal Rights &amp; Guidelines
+                </a>
+
+                <a href="helpline.html">
+                    Helplines
+                </a>
+
+                <a href="#about">
+                    About System
+                </a>
+
+            </div>
+
+
+            <div class="nav-status">
+
+                AI Monitoring System Active
+
+            </div>
+
+        </div>
+
+    </nav>
+
+
+    <!-- =========================================
+         HERO SECTION
+    ========================================= -->
+
+    <section
+        class="hero-section"
+        id="about">
+
+        <div class="hero-inner">
+
+
+            <div class="hero-copy">
+
+                <div class="hero-kicker">
+
+                    AI-Powered Mental Health Support
+
+                </div>
+
+
+                <h1>
+
+                    Monitor.<br>
+                    Predict.<br>
+                    Support.
+
+                </h1>
+
+
+                <p>
+
+                    An AI-powered dynamic mental health monitoring
+                    and distress prediction system designed to help
+                    identify emotional distress, monitor well-being,
+                    provide timely support and assist authorized
+                    professionals in supporting victims of atrocities.
+
+                </p>
+
+
+                <div class="hero-note">
+
+                    Secure • Role-Based • AI-Assisted • Privacy-Focused
+
+                </div>
+
+            </div>
+
+
+            <!-- HERO PANEL -->
+
+            <div class="hero-panel">
+
+                <div class="hero-panel-title">
+
+                    <strong>
+                        System Status
+                    </strong>
+
+                    <span class="status-active">
+                        ● ACTIVE
+                    </span>
+
+                </div>
+
+
+                <div class="status-line">
+
+                    <div class="status-dot"></div>
+
+                    <p>
+                        Dynamic well-being monitoring and
+                        AI-assisted distress assessment.
+                    </p>
+
+                </div>
+
+
+                <div class="status-line">
+
+                    <div class="status-dot"></div>
+
+                    <p>
+                        Secure role-based access for victims,
+                        mental health professionals and
+                        authorized officials.
+                    </p>
+
+                </div>
+
+
+                <div class="status-line">
+
+                    <div class="status-dot"></div>
+
+                    <p>
+                        Select your access category below
+                        to continue securely.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================
+         SYSTEM FEATURES
+    ========================================= -->
+
+    <section
+        class="feature-section"
+        id="features">
+
+        <div class="feature-container">
+
+
+            <div class="section-heading">
+
+                <span class="eyebrow">
+                    Proposed System
+                </span>
+
+
+                <h2>
+                    Intelligent Mental Health Support
+                </h2>
+
+
+                <p>
+
+                    The system combines user monitoring,
+                    AI-assisted distress prediction and
+                    professional intervention to provide
+                    timely and structured mental health support.
+
+                </p>
+
+            </div>
+
+
+            <div class="feature-grid">
+
+
+                <div class="feature-card">
+
+                    <div class="feature-icon">
+                        🧠
+                    </div>
+
+                    <h3>
+                        AI Distress Prediction
+                    </h3>
+
+                    <p>
+                        AI-based analysis helps identify
+                        possible emotional distress patterns
+                        from user assessments and interactions.
+                    </p>
+
+                </div>
+
+
+                <div class="feature-card">
+
+                    <div class="feature-icon">
+                        📊
+                    </div>
+
+                    <h3>
+                        Dynamic Monitoring
+                    </h3>
+
+                    <p>
+                        Track changes in emotional well-being
+                        over time through regular assessments
+                        and secure monitoring tools.
+                    </p>
+
+                </div>
+
+
+                <div class="feature-card">
+
+                    <div class="feature-icon">
+                        🛡️
+                    </div>
+
+                    <h3>
+                        Secure Support System
+                    </h3>
+
+                    <p>
+                        Role-based access helps protect
+                        sensitive information and provides
+                        appropriate access to authorized users.
+                    </p>
+
+                </div>
+
+
+                <div class="feature-card">
+
+                    <div class="feature-icon">
+                        🔔
+                    </div>
+
+                    <h3>
+                        Risk Alerts
+                    </h3>
+
+                    <p>
+                        The system can flag elevated distress
+                        indicators for review by authorized
+                        support professionals.
+                    </p>
+
+                </div>
+
+
+                <div class="feature-card">
+
+                    <div class="feature-icon">
+                        👩‍⚕️
+                    </div>
+
+                    <h3>
+                        Professional Support
+                    </h3>
+
+                    <p>
+                        Mental health professionals can review
+                        relevant assessments and provide
+                        appropriate support or follow-up.
+                    </p>
+
+                </div>
+
+
+                <div class="feature-card">
+
+                    <div class="feature-icon">
+                        📈
+                    </div>
+
+                    <h3>
+                        Reports & Analytics
+                    </h3>
+
+                    <p>
+                        Authorized users can access dashboards,
+                        monitoring insights and system-level
+                        reports for better decision-making.
+                    </p>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================
+         ROLE ACCESS
+    ========================================= -->
+
+    <section
+        class="role-section"
+        id="access">
+
+        <div class="role-container">
+
+
+            <div class="section-heading">
+
+                <span class="eyebrow">
+                    Secure Role-Based Access
+                </span>
+
+
+                <h2>
+                    Select Your Access Portal
+                </h2>
+
+
+                <p>
+
+                    Each user category has access to
+                    different features based on their
+                    responsibilities and authorization level.
+                    Legal references and helplines are open
+                    to everyone without signing in.
+
+                </p>
+
+            </div>
+
+
+            <div class="role-grid">
+
+
+                <!-- VICTIM / CITIZEN -->
+
+                <div
+                    class="role-card"
+                    onclick="window.location.href='citizen-login.html'">
+
+                    <div class="role-number">
+
+                        01 / USER ACCESS
+
+                    </div>
+
+
+                    <h3>
+                        Victim / Citizen
+                    </h3>
+
+
+                    <p>
+
+                        Complete well-being assessments,
+                        monitor your status, access support
+                        resources and securely communicate
+                        with authorized professionals.
+
+                    </p>
+
+
+                    <div class="role-card-action">
+
+                        Continue to Portal
+
+                        <span>→</span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- MENTAL HEALTH PROFESSIONAL -->
+
+                <div
+                    class="role-card"
+                    onclick="window.location.href='contractor-login.html'">
+
+                    <div class="role-number">
+
+                        02 / PROFESSIONAL ACCESS
+
+                    </div>
+
+
+                    <h3>
+                        Mental Health Professional
+                    </h3>
+
+
+                    <p>
+
+                        Review assessments, monitor distress
+                        indicators, manage support cases and
+                        provide appropriate follow-up.
+
+                    </p>
+
+
+                    <div class="role-card-action">
+
+                        Continue to Portal
+
+                        <span>→</span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- GOVERNMENT OFFICIAL -->
+
+                <div
+                    class="role-card"
+                    onclick="window.location.href='official-login.html'">
+
+                    <div class="role-number">
+
+                        03 / AUTHORIZED ACCESS
+
+                    </div>
+
+
+                    <h3>
+                        Government / Support Official
+                    </h3>
+
+
+                    <p>
+
+                        Monitor authorized cases, coordinate
+                        support services and review relevant
+                        reports through secure access.
+
+                    </p>                    <div class="role-card-action">
+
+                        Continue to Portal
+
+                        <span>→</span>
+
+                    </div>
+                </div>
+
+
+                <!-- RIGHTS & HELPLINES RESOURCES -->
+
+                <div
+                    class="role-card"
+                    onclick="window.location.href='legal-support.html'">
+
+                    <div class="role-number">
+
+                        04 / PUBLIC RESOURCES
+
+                    </div>
+
+
+                    <h3>
+                        Rights &amp; Helplines
+                    </h3>
+
+
+                    <p>
+
+                        Browse acts, rules and guidelines,
+                        statutory victim rights and verified
+                        national helplines — freely accessible
+                        without login.
+
+                    </p>
+
+
+                    <div class="role-card-action">
+
+                        Open Resources
+
+                        <span>→</span>
+
+                    </div>
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================
+         SUPPORT SECTION
+    ========================================= -->
+
+    <section class="support-section">
+
+        <div class="support-box">
+
+            <div>
+
+                <h2>
+                    Need Support Now?
+                </h2>
+
+                <p style="margin-bottom:12px;font-size:13px;color:#435163;">
+
+                    Emergency
+                    <a href="tel:112" style="font-weight:700;color:#a22020;text-decoration:none;">112</a>
+                    &nbsp;·&nbsp; Against Atrocities
+                    <a href="tel:14566" style="font-weight:700;color:#0d5b9a;text-decoration:none;">14566</a>
+                    &nbsp;·&nbsp; Tele-MANAS
+                    <a href="tel:14416" style="font-weight:700;color:#0d5b9a;text-decoration:none;">14416</a>
+
+                </p>
+
+                <p>
+
+                    This platform is designed to support
+                    monitoring and connection to appropriate
+                    services. AI-based predictions are
+                    decision-support indicators and should be
+                    reviewed by qualified professionals.
+
+                </p>
+
+            </div>
+
+
+            <button
+                class="support-button"
+                onclick="window.location.href='helpline.html'">
+
+                Emergency Helplines
+
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================
+         FOOTER
+    ========================================= -->
+
+    <footer class="footer">
+
+        <div class="footer-inner">
+
+
+            <div>
+
+                <h4>
+                    AI Mental Health Monitoring System
+                </h4>
+
+                <p>
+
+                    AI-Powered Dynamic Mental Health Monitoring
+                    and Distress Prediction System for
+                    Victims of Atrocities.
+
+                </p>
+
+            </div>
+
+
+            <div>
+
+                <h4>
+                    System
+                </h4>
+
+                <p>
+                    <a href="#features">
+                        System Features
+                    </a>
+                </p>
+
+                <p>
+                    <a href="#access">
+                        Access Portal
+                    </a>
+                </p>
+
+                <p>
+                    <a href="#about">
+                        About System
+                    </a>
+                </p>
+
+                <p>
+                    <a href="legal-support.html">
+                        Legal Rights &amp; Guidelines
+                    </a>
+                </p>
+
+            </div>
+
+
+            <div>
+
+                <h4>
+                    Support
+                </h4>
+
+                <p>
+                    <a href="helpline.html">
+                        Help &amp; Helplines
+                    </a>
+                </p>
+
+                <p>
+                    Privacy &amp; Security
+                </p>
+
+                <p>
+                    <a href="legal-support.html">
+                        Legal Rights &amp; Guidelines
+                    </a>
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            Academic Project Demonstration —
+            AI-Powered Dynamic Mental Health Monitoring
+            and Distress Prediction System.
+
+        </div>
+
+    </footer>
+
+
+    <!-- =========================================
+         JAVASCRIPT
+    ========================================= -->
+
+    <script>
+
+        function showHelp() {
+
+            alert(
+                "For urgent help call 112 (emergency), 14566 (against atrocities) or 14416 (Tele-MANAS counselling). Open the Helplines page for the full directory."
+            );
+
+        }
+
+    </script>
+
+</body>
+
+</html>

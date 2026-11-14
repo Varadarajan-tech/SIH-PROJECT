@@ -1,0 +1,6 @@
+# Never commit secrets
+.env
+server.log
+
+# Runtime artifacts
+node_modules/

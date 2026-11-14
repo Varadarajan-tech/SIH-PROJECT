@@ -1,0 +1,13 @@
+{
+  "name": "asha-mental-health-support",
+  "version": "1.0.0",
+  "description": "ASHA - AI-Powered Dynamic Mental Health Monitoring and Distress Prediction System for Victims of Atrocities (SIH PS 26094)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "license": "MIT"
+}
